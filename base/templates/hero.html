@@ -1,0 +1,40 @@
+{% load static %}
+
+
+<!--Hero-->
+<div class="herosupercontainer" id="herosupercontainer">
+    <div class="herosubcontainer">
+        <div class="heroimage">
+            <div id="heroimagetarget1" class="heroimagetarget1"></div>
+        </div>
+        <div class="herooverlay">
+            <img class="herologo" src="{% static 'assets/logo2.png' %}" > 
+            <h1>Karibu</h1>
+            <h3>Before we can do anything Please Sign in</h3>
+            <div class="herosplashside">
+                <a class="link" href="{% url 'login' %}"><div class="button3">Log in</div></a>
+                <a class="link" href="{% url 'signup' %}"><div class="button3">Sign up</div></a>
+            </div>
+        </div>
+    </div>
+    <div class="herosubcontainer">
+        <div class="heroimage">
+            <div id="heroimagetarget2" class="heroimagetarget2"></div>
+        </div>
+        <div class="herooverlay">
+            <img class="herologo" src="{% static 'assets/logo3.png' %}" > 
+            <h1>If Youre signed in</h1>
+            <h3>Lets make some receipts</h3>
+            <a class="link" href="{% url 'dashboard' %}"><div class="button3">Generate</div></a>
+        </div>
+    </div>
+
+</div>
+<div class="herocontrol">
+    <div class="herocontrolleft">
+        <img class="heroleft" id="heroprev" src="{% static 'assets/up.png' %}">
+    </div>
+    <div class="herocontrolright">
+        <img class="heroright" id="heronext"  src="{% static 'assets/up.png' %}">
+    </div>
+</div>

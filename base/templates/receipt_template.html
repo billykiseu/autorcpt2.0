@@ -1,0 +1,88 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Receipt</title>
+	<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,.1);
+            border-radius: 5px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #555;
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto;
+            max-width: 200px;
+            margin-bottom: 30px;
+        }
+
+        .details {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 40px;
+        }
+
+        .details span {
+            font-weight: bold;
+        }
+
+        .footer {
+            font-size: 14px;
+            text-align: center;
+            margin-top: 40px;
+            color: #999;
+        }
+
+        .contact-link {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+	<div class="container">
+		<h2>Receipt {{ receipt.receipt_number }}</h2>
+		<div class="details">
+			<p><span>House Number:</span> <span id="house_number">{{ receipt.house_number }}</span></p>
+			<p><span>Name:</span> <span id="name">{{ receipt.name }}</span></p>
+			<p><span>Date:</span> <span id="date">{{ receipt.date }}</span></p>
+			<p><span>Phone:</span> <span id="phone">{{ receipt.formatted_phone }}</span></p>
+			<p><span>Description:</span> <span id="description">{{ receipt.description }}</span></p>
+			<p><span>Amount:</span> <span id="amount">{{ receipt.amount }}</span></p>
+			<p>
+                <span>Emails:
+                {% for email in emails %}
+                   {{ email.address }}
+                {% endfor %}
+               </span>
+           </p>        
+		</div>
+		<img src="{% static 'assets/logo.png' %}" height="70" alt="logo">
+
+		<div class="footer">
+			<p>Thank you for your business! For any questions or concerns, please 
+				<a href="mailto:info@company.com" class="contact-link">contact us</a>.</p>
+		</div>
+	</div>
+</body>
+</html>

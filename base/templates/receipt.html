@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+  
+{% include 'preloader.html' %}
+{% include 'header.html' %}
+
+<!--Cloudcover-->
+<div class="cloudcover"></div>
+
+
+<!--Count-->
+<div class="count">
+    <h5>{{ receipts_count }} Records Found</h5>
+
+    
+</div>
+
+<!--Clean content-->
+{% include 'receiptdata.html' %}
+
+<!--pagecontrol-->
+<div class="count">
+
+      <a href="{% url 'generate' %}">
+        <button class="button1">Generate and save all receipts</button>
+      </a>
+      <a href="{% url 'send_mail' %}">
+        <button class="button1">Generate and Send all receipts</button>
+      </a>
+      <a href="{% url 'quofile' %}">
+        <button class="button1">Download status quo excel file</button>
+      </a>
+
+    {% if page_obj.has_other_pages %}
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+        <a href="?page=1">&laquo; First</a>
+        <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+        <span class="current-page">{{ num }}</span>
+        {% else %}
+        <a href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+
+
+{% include 'footer.html' %}
+
+<script src="{% static 'styles/dashboard.js' %}"></script>
+
+{% endblock %}

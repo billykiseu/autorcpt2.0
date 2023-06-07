@@ -1,0 +1,42 @@
+<div class="workspace">
+    {% if error_records %}
+        <ul>
+            {% for record in error_records %}
+                <div class="record">
+                    <h3>Record ID: {{ record.transaction.id }}</h3>
+                    {% if record.error_message %}
+                        <p>Error: {{ record.error_message }}</p>
+                    {% endif %}
+                    <p>House Number: {{ record.transaction.house_number }}</p>
+                    <p>Name: {{ record.transaction.name }}</p>
+                    <p>Date: {{ record.transaction.date }}</p>
+                    <p>Phone: {{ record.transaction.phone }}</p>
+                    <!-- Add other fields here -->
+
+                    <form method="post" action="{% url 'savetodb' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="transaction_id" value="{{ record.transaction.id }}">
+
+                        <label for="field_to_edit">Field to Edit:</label>
+                        <select name="field_to_edit" id="field_to_edit">
+                            <option value="house_number">House Number</option>
+                            <option value="name">Name</option>
+                            <option value="date">Date</option>
+                            <option value="phone">Phone</option>
+                            <!-- Add other fields here -->
+                        </select>
+
+                        <label for="new_value">New Value:</label>
+                        <input type="text" name="new_value" id="new_value">
+
+                        <button type="submit">Save</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>All records have been successfully edited and saved.</p>
+    {% endif %}
+</div>
+
+

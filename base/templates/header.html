@@ -1,0 +1,106 @@
+{% load static %}
+
+<!--Logo-->
+<div>
+    <a class="anchor" href="#">
+            <img class="logo" id="logo" src="{% static 'assets/logo4.png' %}" alt="Logo">
+    </a>
+</div>
+
+<!--MenuToggle--> 
+<div class="menutoggle" id="mobile-toggle">
+    <img id="menutoggleicon" class="menutoggleicon" src="{% static 'assets/menu.png' %}">
+</div>
+
+<!--Scroll-To-Top Button-->
+<div class="ScrollToTop">
+    <img class="scroll-to-top" onclick="topFunction()" id="up" alt="back to top" src="{% static 'assets/up.png' %}"
+        height="38" alt="back to top">
+</div>
+
+<!--Menubox-->
+<div id="navcontainer" class="menubox show">
+    <div class="menubox-right" id="menucont">
+     <!--Searchbar-->
+     <div class="search" id="search-full">
+        <form method="GET" action="{% url 'search' %}">
+            <img class="search-icon dark" id="search-icon-full" src="{% static 'assets/search.png' %}" height="28">
+            <img class="close" id="close-full" src="{% static 'assets/close.png' %}" height="28">
+            <input class="search-input" type="text" name="q" placeholder="Search EdenVille" onclick="submit">
+            <button class="go" type="submit" onclick="submit"><img id="go-icon" src="{% static 'assets/search.png' %}"
+                    height="30"></button>
+        </form>
+            <!--<ul class="autocomplete-result-list"></ul>-->
+    </div>
+        <!--Links-->
+        <div class="menusuperbox" id="menusuperbox1">
+            <a class="link" href="{% url 'home' %}">
+                <div class="menusubbox" id="home">Home
+                <img class="menuhover" id="homeicon" src="{% static 'assets/home.png' %}">
+                </div>
+            </a>
+        </div>
+        <div class="menusuperbox"id="menusuperbox2">
+            <a class="link" href="{% url 'dashboard' %}">
+                <div class="menusubbox" id="home">Excel
+                <img class="menuhover" id="homeicon" src="{% static 'assets/excel.png' %}">
+                </div>
+            </a>
+        </div>
+        <div class="menusuperbox" id="menusuperbox3">
+            <a class="link" href="{% url 'clean' %}">
+                <div class="menusubbox" id="home">Clean
+                <img class="menuhover" id="homeicon" src="{% static 'assets/clean.png' %}">
+                </div>
+            </a>
+        </div>
+        <div class="menusuperbox" id="menusuperbox4">
+            <a class="link" href="{% url 'receipts' %}">
+                <div class="menusubbox" id="home">Receipts
+                <img class="menuhover" id="homeicon" src="{% static 'assets/generate.png' %}">
+                </div>
+            </a>
+        </div>
+        <div class="button0" id="contactbtn">contact Us
+        </div>
+
+         <!--logout-->
+         {% if request.user.is_authenticated %}
+            <a class="link" href="{% url 'logout' %}">
+                <img class="logout" id="logout" src="{% static 'assets/logout.png' %}"> 
+            </a>
+        {% endif %}
+
+        </div>
+    </div>
+</div>
+
+<!--Mobile-menu-->
+<div class="mobilebox hide" id="mobilebox">
+    <img class="mobile-close" id="mobile-close" src="{% static 'assets/close.png' %}" height="35">
+    <a class="link" href="{% url 'home' %}">
+        <div class="mobilebox-subcont" id="item1">Home
+    <img class="menuhover" src="assets/home.png">
+    </div>
+    </a>
+    <a class="link" href="{% url 'dashboard' %}">
+    <div class="mobilebox-subcont" id="item2">Excel
+        <img class="menuhover" src="{% static 'assets/excel.png' %}">
+    </div>
+    </a>
+    <a class="link" href="{% url 'clean' %}">
+    <div class="mobilebox-subcont" id="item3">Clean
+        <img class="menuhover" src="{% static 'assets/clean.png' %}">
+    </div>
+    </a>
+    <div class="button2" id="contactbtnmobi">contact Us
+    </div>
+    <!--logout-->
+    {% if request.user.is_authenticated %}
+        <a class="link" href="{% url 'logout' %}">
+            <img class="logout" id="logout" src="{% static 'assets/logout.png' %}"> 
+        </a>
+   {% endif %}
+</div>
+
+

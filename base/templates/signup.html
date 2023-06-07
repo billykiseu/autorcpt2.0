@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+  
+{% include 'preloader.html' %}
+
+<div class="credentialsplash">
+    <div class="credentialoverlay">
+        <div class="credentialcard">
+            <div class="prettycard">
+                <a href="{% url 'home' %}"><img class="credlogo" src="{% static 'assets/logo4.png' %}"></a>
+                <h3>Already have an account?</h3>
+                <a href="{% url 'login' %}"><div class="button0">Log in</div></a>
+            </div>
+            <div class="credentialform">
+                <h2>Sign Up</h2>
+                <div class="credentialformdata">
+                    <form action="signup" method="POST" class="form login">
+                        {% csrf_token %} 
+                          {{form.username}}
+                          <div class="doubleinput">{{form.first_name}}{{form.last_name}}</div>
+                          {{form.email}}
+                          {{form.password1}}
+                          {{form.password2}}
+                      <button type="submit" class="button1">Sign up</button>
+                    </form>  
+                </div>
+            </div>
+
+        </div>
+    </div>    
+</div>
+
+<script src="{% static 'styles/home.js' %}"></script>
+
+{% endblock %}

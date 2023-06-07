@@ -1,0 +1,12 @@
+<div class="workspace">
+
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="file">Upload a file:</label>
+        <input type="file" name="file" id="file">
+    </div>
+    <button type="submit" class="button1">Preview Data</button>
+    </form>
+
+</div>

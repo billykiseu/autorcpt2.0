@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+  
+{% include 'preloader.html' %}
+{% include 'header.html' %}
+
+<!--home content-->
+{% include 'hero.html' %}
+
+{% include 'footer.html' %}
+
+<script src="{% static 'styles/home.js' %}"></script>
+
+{% endblock %}

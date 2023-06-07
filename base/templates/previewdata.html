@@ -1,0 +1,40 @@
+
+<h2>Preview Transactions</h2>
+
+<p>Preview the uploaded excel data before saving to Receipt database</p>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>House Number</th>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Phone</th>
+      <th>Description</th>
+      <th>Amount</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for transaction in transactions %}
+    <tr>
+      <td>{{ transaction.HouseNumber }}</td>
+      <td>{{ transaction.Name }}</td>
+      <td>{{ transaction.Date }}</td>
+      <td>{{ transaction.Phone }}</td>
+      <td>{{ transaction.Description }}</td>
+      <td>{{ transaction.Amount }}</td>
+      <td>{{ transaction.Email }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+   
+<form method="post" action="{% url 'savetodb' %}">
+  {% csrf_token %}
+  <button type="submit" class="button1">Save Receipts</button>
+</form>
+<br>
+
+<br>
+<a href="{% url 'template' %}" class="button1">Preview Receipt</a>

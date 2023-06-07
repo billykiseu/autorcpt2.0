@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'styles/main.css' %}">
+  <link rel="icon" type="image/x-icon" sizes="any" href="{% static 'assets/logo3.png' %}">
+</head>
+<body>
+
+<!--Notifications-->
+<div class="messagecont">
+  {% if messages %}
+    {% for message in messages %}
+        <ul class="messages">
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            <img class="messageclose" data-message-id="{{ forloop.counter }}" src="{% static 'assets/close.png' %}" height="28">
+        </ul>
+    {% endfor %}
+  {% endif %}
+</div>
+ 
+  <main>
+      {% block content %}{% endblock %}
+  </main>
+  <script src="{% static 'styles/main.js' %}"></script>
+
+</body>
+</html>
+
+

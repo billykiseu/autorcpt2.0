@@ -1,0 +1,48 @@
+{% load static %}
+
+<!--Footer-->
+<div class="footer-supercontainer" id="contactloc">
+    <div class="footer-container1">
+        <div class="footer-subcontainer">
+            <div class="footer-subcontainer2">
+                <img class="logo2" src="{% static 'assets/logo2.png' %}" alt="Logo">
+                <h4>AutoReceipt generator</h4>
+            </div>   
+        </div>
+        <div class="footer-subcontainer">
+            <div class="footer-subcontainer2">        
+                <h2>Contact Us</h2>
+                <a class="link" href="tel:0708426672"><h4><img class="contacticon2" src="{% static 'assets/phone.png' %}"> +254 748 476 524</h4></a>
+                <a class="link" href="mailto:billykiseu@gmail.com"><h4><img class="contacticon2" src="{% static 'assets/mail.png' %}"> billykiseu@gmail.com</h4></a>
+            </div>  
+        </div>
+        <div class="footer-subcontainer">
+            <div class="footer-subcontainer2">
+                <h2>Useful Links</h2>
+                <a class="link" href="{% url 'manual' %}"><h4>Manual</h4></a>  
+            </div>
+        </div>
+    </div>
+    <div class="dash"></div>
+    <div class="footer-container2">
+        <div class="footer-subcontainer3">
+            <a class="link" href="#">
+                <img class="social-footer" src="{% static 'assets/whatsapp.gif' %}">
+            </a>
+            <a class="link" href="#">
+                <img class="social-footer" src="{% static 'assets/facebook.gif' %}">
+            </a>
+            <a class="link" href="#">
+                <img class="social-footer" src="{% static 'assets/instagram.gif' %}">
+            </a>
+            <a class="link" href="#">
+                <img class="social-footer" src="{% static 'assets/twitter.gif' %}">
+            </a>
+        </div>
+        
+    </div>
+    <div class="footer-subcontainer4"> 
+        <h5>Copyright 2023 © Autoreceipt</h5>
+        <h5>Developed by <a class="footerlink" href="#">Kraftbox</a></h5>
+    </div>
+</div>

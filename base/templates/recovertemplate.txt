@@ -1,0 +1,22 @@
+{% autoescape off %}
+
+Hi {{CustomUser.username}},
+
+We received a request to reset the password for your account.
+
+Click below link to reset your password.
+
+{{ protocol }}://{{domain}}{% url 'password_reset_confirm' uidb64=uid token=token %}
+
+This link can only be used once. If you need to reset ypur password agein,
+please visit {{ protocol }}://{{domain}}.
+
+http://127.0.0.1:5000/recover
+
+if you did not make this request, please ignore this email.
+
+Regards
+
+XendMe.com
+
+{% endautoescape off %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+  
+{% include 'preloader.html' %}
+
+<!--Login-->
+<div class="credentialsplash">
+    <div class="credentialoverlay">
+        <div class="credentialcard">
+            <div class="prettycard">
+              <a href="{% url 'home' %}"><img class="credlogo" src="{% static 'assets/xendmelogo.png' %}"></a>
+                <h2>New Here?</h2>
+                <a href="{% url 'signup' %}"><div class="herobutton4">Sign up</div></a>
+            </div>
+            <div class="credentialform">
+                <h2>Email Sent</h2>
+                <div class="grid">
+                    <h4>We’ve emailed you instructions for setting your password, <br>
+                        if an account exists with the email you entered. <br>
+                       You should receive them shortly.</h4>    
+                  </div>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<script src="{% static 'styles/home.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+  
+{% include 'preloader.html' %}
+{% include 'header.html' %}
+
+
+<!--Cloudcover-->
+<div class="cloudcover"></div>
+
+<div class ="workspace">
+
+<!--Preview content-->
+{% include 'previewdata.html' %}
+
+</div>
+
+{% include 'footer.html' %}
+
+<script src="{% static 'styles/dashboard.js' %}"></script>
+
+{% endblock %}

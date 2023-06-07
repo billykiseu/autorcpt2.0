@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+  
+{% include 'preloader.html' %}
+{% include 'header.html' %}
+
+<!--Cloudcover-->
+<div class="cloudcover"></div>
+
+<!--Count-->
+<div class="count">
+    <h5>{{ item_count }} Records Found</h5>
+</div>
+
+<!--searchresult-->
+<div class="workspace2">
+    {% for receipt in search %}
+    <div class="rcptcard">
+        <h3>{{ receipt.receipt_number }}</h3>
+        <h4>{{ receipt.name }}</h4>
+        <h5>{{ receipt.date }}</h5>
+    </div>
+    {% empty %}
+    <p>No results found.</p>
+    {% endfor %}
+</div>
+
+
+<!--pagination-->
+<div class="count">
+    {% if search.has_previous %}
+    <a href="?page={{ search.previous_page_number }}">previous</a>
+    {% endif %}
+
+    <span class="current-page">{{ search.number }}</span>
+
+    {% if search.has_next %}
+    <a href="?page={{ search.next_page_number }}">next</a>
+    {% endif %}
+</div>
+
+{% include 'footer.html' %}
+
+<script src="{% static 'styles/aboutus.js' %}"></script>
+
+{% endblock %}

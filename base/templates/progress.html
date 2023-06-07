@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Sending Progress</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,.1);
+            border-radius: 5px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #555;
+        }
+
+        .progress-bar {
+            background-color: #f5f5f5;
+            border-radius: 4px;
+            height: 20px;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar-inner {
+            background-color: #007bff;
+            border-radius: 4px;
+            height: 20px;
+            width: 0;
+            transition: width 0.3s ease-in-out;
+        }
+
+        .progress-text {
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .completed {
+            color: green;
+        }
+
+        .failed {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Email Sending Progress</h1>
+
+        <div class="progress-bar">
+            <div class="progress-bar-inner" id="progress-bar-inner"></div>
+        </div>
+
+        <p class="progress-text">Emails Sent: <span id="completed-count">0</span></p>
+        <p class="progress-text">Emails Failed: <span id="failed-count">0</span></p>
+    </div>
+
+    <script>
+        // Get the progress data from the server
+        function getProgressData() {
+            fetch('/progress-data/')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the progress bar width
+                    const progressBar = document.getElementById('progress-bar-inner');
+                    progressBar.style.width = `${data.progressPercentage}%`;
+
+                    // Update the completed and failed counts
+                    const completedCount = document.getElementById('completed-count');
+                    completedCount.textContent = data.completedCount;
+
+                    const failedCount = document.getElementById('failed-count');
+                    failedCount.textContent = data.failedCount;
+
+                    // Check if all emails have been sent
+                    if (data.isComplete) {
+                        // Perform any necessary actions after completion
+                    } else {
+                        // Continue checking the progress after a delay
+                        setTimeout(getProgressData, 2000);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        // Start checking the progress initially
+        getProgressData();
+    </script>
+</body>
+</html>

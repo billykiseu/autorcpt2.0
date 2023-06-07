@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+  
+{% include 'preloader.html' %}
+{% include 'header.html' %}
+
+<!--Cloudcover-->
+<div class="cloudcover"></div>
+
+
+<!--Elevation is required-->
+<div class="count">
+    <h5>Youre credentials are valid but to acess this function, your credentials need to be escalated
+        Contact admin to be elevated
+    </h5>
+
+    
+</div>
+
+
+{% include 'footer.html' %}
+
+<script src="{% static 'styles/home.js' %}"></script>
+
+{% endblock %}

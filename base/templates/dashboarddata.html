@@ -1,0 +1,34 @@
+
+<div class="workspace">
+
+    <h2>Basic excel data upload</h2>
+
+    <br>
+
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        
+        <label for="file">Upload an Excel file:</label>
+        <input type="file" name="file" id="file">
+    </div>
+    <button type="submit" class="button1">Preview Data</button>
+    </form>
+
+    <br>
+
+    <h2>Advanced Bulk Update</h2>
+    
+    <br>
+
+    <form method="post" enctype="multipart/form-data" action="{% url 'quoupdate' %}">
+        {% csrf_token %}
+        <div class="form-group">
+           
+            <label for="file">Upload Excel file for Bulk Update:</label>
+            <input type="file" name="file" id="file">
+        </div>
+        <button type="submit" class="button1">Update Database</button>
+    </form>
+
+</div>

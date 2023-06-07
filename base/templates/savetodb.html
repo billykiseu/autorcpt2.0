@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+  
+{% include 'preloader.html' %}
+{% include 'header.html' %}
+
+
+<!--Cloudcover-->
+<div class="cloudcover"></div>
+
+<!--savetodbdata content-->
+{% include 'edit_records.html' %}
+
+
+{% include 'footer.html' %}
+
+<script src="{% static 'styles/dashboard.js' %}"></script>
+
+{% endblock %}
